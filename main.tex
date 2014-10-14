@@ -1,0 +1,151 @@
+\documentclass[sans]{beamer}
+
+\mode<presentation>
+{
+	% \usetheme{CambridgeUS}
+	% \usetheme{Hannover}
+	\usetheme{Singapore}
+	\usecolortheme{default}
+}
+
+\usepackage{cmap}
+\usepackage{listings}
+\usepackage{lmodern}
+\usepackage{color}
+\usepackage{minted}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\usepackage{wrapfig}
+
+\usepackage[labelformat=empty]{caption}
+\usepackage{fontspec}
+% \usepackage{polyglossia}
+% \setdefaultlanguage{russian}
+
+% \setmainfont[Ligatures=TeX]{DejaVu Serif}
+% \setsansfont[Ligatures=TeX]{DejaVu Sans}
+% \setmonofont{DejaVu Sans Mono}
+
+\definecolor{myGray}{RGB}{50,50,50}
+
+\begin{document}
+\title
+[Intuitionistic Logic]
+{Intuitionistic Logic}
+
+\author
+[JBStuff]{Podkopaev Anton, Daniil Berezun}
+\institute{JetBrains Lab}
+\date [20-10-14]{20 oct 2014}
+
+\begin{frame}[plain]
+	\titlepage
+\end{frame}
+
+\begin{frame}{Some history blah-blah}
+\end{frame}
+
+\begin{frame}{Examples (1)}
+  \emph{
+    There is seven $7$'s in a row somewhere in
+    the decimal representation
+    of the number $\pi$.
+  }
+\end{frame}
+
+\begin{frame}{Examples (2)}
+  \emph{
+    There are two irrational numbers $x$ and $y$, such that $x^y$ is rational.
+  }
+  \vfill
+  \begin{block}{Proof:}
+    if $\sqrt{2}^{\sqrt{2}}$ is a rational then we can take $x = y = \sqrt{2}$;
+
+    otherwise take $x = \sqrt{2}^{\sqrt{2}}$ and $y = \sqrt{2}$
+  \end{block}
+\end{frame}
+
+\begin{frame}{Intuitive semantics}
+  \emph{BHK-interpretation} (for Brouwler, Heyting, Kolmogorov)
+
+  \begin{block}{Rules:}
+    \begin{itemize}
+      \item A construction of $\varphi_1 \wedge \varphi_2$ consists of
+            a construction of $\varphi_1$ and a construction of $\varphi_2$
+      \item A construction of $\varphi_1 \vee \varphi_2$ consists of a
+            number $i \in \{1, 2\}$ and a construction of $\varphi_i$
+      \item A construction of $\varphi_1 \to \varphi_2$ is a method (function)
+            transforming every construction of $\varphi_1$ into a construction
+            of $\varphi_2$
+      \item There is no possible construction of $\bot$ (where $\bot$ denotes falsity)
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}{Negation}
+  Negation $\lnot \varphi$ is best understood as an abbreviation of an implication $\varphi \to \bot$
+
+  \begin{itemize}
+    \item A construction of $\lnot \varphi$ is a method that turns every construction of
+      $\varphi$ into a non-existed object
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Classic tautologies}
+   \begin{enumerate}
+     \item $\bot \to p$
+     \item $((p \to q) \to p) \to p$
+     \item $p \to \lnot \lnot p$
+     \item $\lnot \lnot p \to p$
+     \item $\lnot \lnot \lnot p \to \lnot p$
+     \item $(\lnot q \to \lnot p) \to (p \to q)$
+     \item $(p \to q) \to (\lnot q \to \lnot p)$
+     \item $\lnot (p \wedge q) \to (\lnot p \vee \lnot q)$
+     \item $(\lnot p \vee \lnot q) \to \lnot (p \wedge q)$
+     \item $((p \leftrightarrow q) \leftrightarrow r) \leftrightarrow (p \leftrightarrow (q \leftrightarrow r))$
+     \item $((p \wedge q) \to r) \leftrightarrow (p \to (q \to r))$
+     \item $(p \to q) \leftrightarrow (\lnot p \vee q)$
+     \item $\lnot\lnot (p \vee p)$
+   \end{enumerate}
+\end{frame}
+
+\begin{frame}{Classic tautologies}
+   \begin{enumerate}
+     \item $\bot \to p$
+     \item \textcolor{red}{$((p \to q) \to p) \to p$}
+     \item $p \to \lnot \lnot p$
+     \item \textcolor{red}{$\lnot \lnot p \to p$}
+     \item $\lnot \lnot \lnot p \to \lnot p$
+     \item \textcolor{red}{$(\lnot q \to \lnot p) \to (p \to q)$}
+     \item $(p \to q) \to (\lnot q \to \lnot p)$
+     \item \textcolor{red}{$\lnot (p \wedge q) \to (\lnot p \vee \lnot q)$}
+     \item $(\lnot p \vee \lnot q) \to \lnot (p \wedge q)$
+     \item \textcolor{red}{$((p \leftrightarrow q) \leftrightarrow r) \leftrightarrow (p \leftrightarrow (q \leftrightarrow r))$}
+     \item $((p \wedge q) \to r) \leftrightarrow (p \to (q \to r))$
+     \item \textcolor{red}{$(p \to q) \leftrightarrow (\lnot p \vee q)$}
+     \item \textcolor{red}{$\lnot\lnot (p \vee p)$}
+   \end{enumerate}
+\end{frame}
+
+\begin{frame}{Example of failure. $\lnot \lnot p \to p$}
+  $\lnot \lnot p \to p = ((p \to \bot) \to \bot) \to p$
+
+  \vspace{1cm}
+
+  You need to construct $p$ from something that takes $p \to \bot$
+  and returns $\bot$
+\end{frame}
+
+\begin{frame}{The language of logic}
+  $\Phi ::= \bot \; | \; PV \; | \; (\Phi \to \Phi) \; |
+   \; (\Phi \vee \Phi) \; | \; (\Phi \wedge \Phi) $
+
+  \begin{itemize}
+    \item $\lnot \varphi = \varphi \to \bot$
+    \item $\varphi \to \psi = (\varphi \to \psi) \wedge (\psi \to \varphi)$
+    \item The implication is right associative
+  \end{itemize}
+\end{frame}
+
+\end{document}
