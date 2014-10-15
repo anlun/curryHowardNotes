@@ -304,8 +304,59 @@
   
   The relation $\leq$ defined as by $a \leq b$ iff $a \cup b = b$ is a partial order,
   $\cap, \cup$ are the \emph{glb} and \emph{lub} operations
-
-
 \end{frame} 
+
+\newcommand{\eqc}[1]{[#1]_{\sim}}
+\newcommand{\mlg}{\mathcal{L}_{\Gamma}\;}
+\newcommand{\mlgm}{$\mlg$}
+
+\begin{frame}{Lindenbaum algebra}
+  \begin{itemize}
+    \item $\Gamma \subseteq \Phi$
+    \item $\varphi \sim \psi$ iff $\Gamma \vdash \varphi \to \psi$ and $\Gamma \vdash \psi \to \varphi$
+    \item $\mathcal{L} _{\Gamma} = {\Phi}/_{\sim} = \{\eqc{\varphi} : \varphi \in \Phi\}$
+    \item $\eqc{\varphi} \leq \eqc{\psi}$ iff $\Gamma \vdash \varphi \to \psi$
+    \item Operations over $\mathcal{L}_{\Gamma}$:
+
+      $\begin{aligned}
+        \eqc{\alpha} \cup \eqc{\beta} &= \eqc{\alpha \vee \beta}; \\
+        \eqc{\alpha} \cap \eqc{\beta} &= \eqc{\alpha \wedge \beta}; \\
+                     -\eqc{\alpha} &= \eqc{\lnot \alpha}
+       \end{aligned}$
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{\mlgm properties}
+  \begin{itemize}
+    \item $\eqc{\bot}$ is the least element 0 of \mlgm
+    \item $\eqc{\top}$ is the top element 1 of \mlgm
+    
+    \vfill
+    \item $-a \cap a = \eqc{\bot}$
+    \item \textcolor{red}{Not necessarily true:} $-a \cup a = \eqc{\top}$
+    \vfill
+
+    \item $c = (a \Rightarrow b)$ iff $c$ is the greatest element such that $a \cap c = b$
+    \item $\eqc{\varphi} \Rightarrow \eqc{\psi} = \eqc{\varphi \to \psi}$
+
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Heyting algebra}
+  $\mathcal{H} = \langle H, \cup, \cap, \Rightarrow, -, 0, 1 \rangle$
+  \begin{itemize}
+    \item $\cup, \cap$ are associative and commutative;
+    \item $(a \cup b) \cap c = (a \cap c) \cup (b \cap c) \;$ and
+          $\; (a \cap b) \cup c = (a \cup c) \cap (b \cup c)$;
+    \item $a \cup 0 = a \;$ and $\; a \cap 1 = a$;
+    \item $a \cup a = a$;
+    \item $a \cap c \leq b$ is equivalent to $c \leq a \Rightarrow b$,
+      
+      where $a \leq b$ stands for $a \cup b = b$
+
+    \item $-a = a \Rightarrow 0$
+ 
+  \end{itemize}
+\end{frame}
 
 \end{document}
