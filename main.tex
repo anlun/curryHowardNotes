@@ -17,6 +17,7 @@
 \usepackage{tikz}
 \usetikzlibrary{arrows}
 \usepackage{wrapfig}
+\usepackage{bussproofs}
 
 \usepackage[labelformat=empty]{caption}
 \usepackage{fontspec}
@@ -28,8 +29,10 @@
 % \setmonofont{DejaVu Sans Mono}
 
 \definecolor{myGray}{RGB}{50,50,50}
+\EnableBpAbbreviations
 
 \begin{document}
+
 \title
 [Intuitionistic Logic]
 {Intuitionistic Logic}
@@ -143,9 +146,81 @@
 
   \begin{itemize}
     \item $\lnot \varphi = \varphi \to \bot$
-    \item $\varphi \to \psi = (\varphi \to \psi) \wedge (\psi \to \varphi)$
+    \item $\varphi \leftrightarrow \psi = (\varphi \to \psi) \wedge (\psi \to \varphi)$
     \item The implication is right associative
   \end{itemize}
+\end{frame}
+
+
+\begin{frame}{Intuitionistic propositional calculus}
+  \begin{prooftree}
+    \AXC{$\Gamma, \varphi \vdash \varphi$ (Ax)}
+  \end{prooftree}
+
+  \begin{columns}
+  
+  \begin{column}{0.3\linewidth}
+  \begin{prooftree}
+    \AXC{$\Gamma \vdash \varphi$}
+    \AXC{$\Gamma \vdash \psi$}
+    \RightLabel{($\bigwedge$ I)}
+    \BIC{$\Gamma \vdash \varphi \wedge \psi$}
+  \end{prooftree}
+
+  \begin{prooftree}
+    \AXC{$\Gamma \vdash \varphi \wedge \psi$}
+    \RightLabel{($\bigwedge$ E1)}
+    \UIC{$\Gamma \vdash \varphi$}
+  \end{prooftree}
+  \begin{prooftree}
+    \AXC{$\Gamma \vdash \varphi \wedge \psi$}
+    \RightLabel{($\bigwedge$ E2)}
+    \UIC{$\Gamma \vdash \psi$}
+  \end{prooftree}
+  \end{column}
+
+  \begin{column}{0.3\linewidth}
+  \begin{prooftree}
+    \AXC{$\Gamma \vdash \varphi$}
+    \RightLabel{($\bigvee$ I1)}
+    \UIC{$\Gamma \vdash \varphi \vee \psi$}
+  \end{prooftree}
+  \begin{prooftree}
+    \AXC{$\Gamma \vdash \psi$}
+    \RightLabel{($\bigvee$ I2)}
+    \UIC{$\Gamma \vdash \varphi \vee \psi$}
+  \end{prooftree}
+  \end{column}
+ 
+  \begin{column}{0.4\linewidth}
+  \begin{prooftree}
+    \AXC{$\Gamma, \; \varphi \vdash \psi$}
+    \RightLabel{($\to$ I)}
+    \UIC{$\Gamma \vdash \varphi \to \psi$}
+  \end{prooftree}
+  \begin{prooftree}
+    \AXC{$\Gamma, \; \varphi$}
+    \AXC{$\Gamma \vdash \varphi \to \psi$}
+    \RightLabel{($\to$ E)}
+    \BIC{$\Gamma, \; \psi$}
+  \end{prooftree}
+
+  \begin{prooftree}
+    \AXC{$\Gamma \vdash \bot$}
+    \RightLabel{($\bot$ E)}
+    \UIC{$\Gamma \vdash \varphi$}
+  \end{prooftree}
+  \end{column} 
+
+  \end{columns}
+
+  \begin{prooftree}
+    \AXC{$\Gamma, \; \varphi \vdash \rho$}
+    \AXC{$\Gamma, \; \psi \vdash \rho$}
+    \AXC{$\Gamma \vdash \varphi \vee \psi$}
+    \RightLabel{($\bigvee$ E)}
+    \TIC{$\Gamma \vdash \rho$}
+  \end{prooftree}
 \end{frame}
 
 \end{document}
