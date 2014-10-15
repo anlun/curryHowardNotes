@@ -18,6 +18,7 @@
 \usetikzlibrary{arrows}
 \usepackage{wrapfig}
 \usepackage{bussproofs}
+\usepackage{stmaryrd}
 
 \usepackage[labelformat=empty]{caption}
 \usepackage{fontspec}
@@ -221,6 +222,71 @@
     \RightLabel{($\bigvee$ E)}
     \TIC{$\Gamma \vdash \rho$}
   \end{prooftree}
+\end{frame}
+
+\newcommand{\vsem}[1]{\llbracket #1 \rrbracket_v}
+\newcommand{\vmsem}[1]{$\llbracket #1 \rrbracket_v$}
+\newcommand{\got}[1]{$\mathbb{#1} \;$}
+\newcommand{\gotb}{\got{B}}
+\newcommand{\cali}[1]{$\mathcal{#1} \;$}
+\newcommand{\calr}{\cali{R}}
+
+\begin{frame}{The boolean semantics}
+  \begin{itemize}
+    \item A \emph{valuation in} \gotb is a map \emph{PV} $\to$ \gotb;
+      such a map will also be called a 0-1 \emph{valuation}
+
+    \vfill
+
+    \item The map \vmsem{\bullet} : $\Phi \to$ \gotb by:
+
+      $\begin{aligned}
+        \vsem{p} &= v(p) & for \; p \in PV; \\
+        \vsem{\bot} &= 0; \\
+        \vsem{\varphi \vee \psi} &= max\{\vsem{\varphi}, \vsem{psi}\}; \\
+        \vsem{\varphi \wedge \psi} &= min\{\vsem{\varphi}, \vsem{psi}\};\\
+        \vsem{\varphi \to \psi} &= max\{1 - \vsem{\varphi}, \vsem{psi}\}
+       \end{aligned}$
+
+    \vfill
+    \item We also write $v(\varphi)$ for \vmsem{\varphi}
+
+    \vfill
+  \item A formula $\varphi \in \Phi$ is a \emph{tautology} if $v(\varphi) = 1$ for
+        all valuations in \gotb
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{The set-theoretic semantics}
+  \begin{itemize}
+    \item A \emph{field of sets (over X)} is a nonempty family \calr
+      of subsets of $X$, closed under unions, intersections and complement (to $X$)
+    
+    \item \{\}, X $\in \mathcal{R}$
+    
+    \item A \emph{valuation in} \calr is a map \emph{PV} $\to$ \calr
+      
+    \vfill
+
+    \item The map \vmsem{\bullet} : $\Phi \to X$ by:
+
+      $\begin{aligned}
+        \vsem{p} &= v(p) & for \; p \in PV; \\
+        \vsem{\bot} &= \{\}; \\
+        \vsem{\varphi \vee \psi} &= \vsem{\varphi} \cup \vsem{psi}; \\
+        \vsem{\varphi \wedge \psi} &= \vsem{\varphi} \cap \vsem{psi};\\
+        \vsem{\varphi \to \psi} &= (X - \vsem{\varphi}) \cup \vsem{psi}
+       \end{aligned}$
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{}
+  The above two approaches to semantics are equivalent, i.e., the following conditions
+  are equivalent for each field of subsets \calr over a nonempty set $X$:
+  \begin{enumerate}
+    \item $\varphi \;$ \emph{is a tautology};
+    \item $v(\varphi) \,=\, X$, for all valuations $v \; in \; $\calr
+  \end{enumerate}
 \end{frame}
 
 \end{document}
