@@ -241,11 +241,11 @@
     \item The map \vmsem{\bullet} : $\Phi \to$ \gotb by:
 
       $\begin{aligned}
-        \vsem{p} &= v(p) & for \; p \in PV; \\
-        \vsem{\bot} &= 0; \\
-        \vsem{\varphi \vee \psi} &= max\{\vsem{\varphi}, \vsem{psi}\}; \\
-        \vsem{\varphi \wedge \psi} &= min\{\vsem{\varphi}, \vsem{psi}\};\\
-        \vsem{\varphi \to \psi} &= max\{1 - \vsem{\varphi}, \vsem{psi}\}
+        \vsem{p} &= v(p) & for \; p \in PV \\
+        \vsem{\bot} &= 0 \\
+        \vsem{\varphi \vee \psi} &= max\{\vsem{\varphi}, \vsem{\psi}\} \\
+        \vsem{\varphi \wedge \psi} &= min\{\vsem{\varphi}, \vsem{\psi}\}\\
+        \vsem{\varphi \to \psi} &= max\{1 - \vsem{\varphi}, \vsem{\psi}\}
        \end{aligned}$
 
     \vfill
@@ -271,11 +271,11 @@
     \item The map \vmsem{\bullet} : $\Phi \to X$ by:
 
       $\begin{aligned}
-        \vsem{p} &= v(p) & for \; p \in PV; \\
-        \vsem{\bot} &= \{\}; \\
-        \vsem{\varphi \vee \psi} &= \vsem{\varphi} \cup \vsem{psi}; \\
-        \vsem{\varphi \wedge \psi} &= \vsem{\varphi} \cap \vsem{psi};\\
-        \vsem{\varphi \to \psi} &= (X - \vsem{\varphi}) \cup \vsem{psi}
+        \vsem{p} &= v(p) & for \; p \in PV \\
+        \vsem{\bot} &= \{\} \\
+        \vsem{\varphi \vee \psi} &= \vsem{\varphi} \cup \vsem{\psi} \\
+        \vsem{\varphi \wedge \psi} &= \vsem{\varphi} \cap \vsem{\psi}\\
+        \vsem{\varphi \to \psi} &= (X - \vsem{\varphi}) \cup \vsem{\psi}
        \end{aligned}$
   \end{itemize}
 \end{frame}
@@ -355,8 +355,98 @@
       where $a \leq b$ stands for $a \cup b = b$
 
     \item $-a = a \Rightarrow 0$
- 
+
+    \vfill
+    \pause
+    
+    \hrule
+    \vfill
+
+    \item Equals to a distributive lattice with zero and relative pseudo-complement defined
+          for each pair of elements
+    \item Each Boolean algebra is a Heyting algebra with $a \Rightarrow b = -a \cup b$
+
   \end{itemize}
+\end{frame}
+
+\begin{frame}{Non-Boolean example}
+  $\mathcal{H} = \langle \mathcal{O}(\mathbb{R}^2), \cup, \cap, \Rightarrow, {\sim}, 0, 1 \rangle$
+  \begin{itemize}
+    \item $\mathcal{O}(\mathbb{R}^2)$ is the family of all open subsets 
+    \item $A \Rightarrow B := Int(-A \cup B)$
+    \item $0 = \{\}$ and $1 = \mathbb{R}$
+    \item ${\sim} A = Int(-A)$
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Heyting semantics for intuitionistic logic}
+  \begin{itemize}
+    \item A \emph{valuation v} in a \cali{H} is a map $v$ : \emph{PV} $\to$ \emph{H}
+    \item The map \vmsem{\bullet} : $\Phi \to H$ by:
+
+      $\begin{aligned}
+        \vsem{p} &= v(p) & for \; p \in PV \\
+        \vsem{\bot} &= 0 \\
+        \vsem{\varphi \vee \psi} &= \vsem{\varphi} \cup \vsem{\psi} \\
+        \vsem{\varphi \wedge \psi} &= \vsem{\varphi} \cap \vsem{\psi}\\
+        \vsem{\varphi \to \psi} &= \vsem{\varphi} \Rightarrow \vsem{\psi}
+       \end{aligned}$
+  \end{itemize}
+\end{frame}
+
+
+\newcommand{\calh}{\cali{H}}
+\newcommand{\mcalh}{\mathcal{H}}
+
+\begin{frame}{Intuitionistical derivation rules}
+  $\mathcal{H} = \langle \mathcal{O}(\mathbb{R}^2), \cup, \cap, \Rightarrow, {\sim}, 0, 1 \rangle$
+  \begin{itemize}
+    \item $\mcalh, v \models \varphi$, whenever $v(\varphi) = 1$
+    \item $\mcalh \models \varphi$, whenever $\mcalh, v \models \varphi$, for all $v$
+    \item $\mcalh, v \models \Gamma$, whenever $\mcalh, v \models \varphi$, forall $\varphi \in \Gamma$
+    \item $\mcalh \models \Gamma$, whenever $\mcalh, v \models \Gamma$, forall $v$
+    \item $\models \varphi$, whenever $\mcalh, v \models \varphi$, for all $H, v$
+    \item $\Gamma \models \varphi$, whenever $\mcalh, v \models \Gamma$ implies $\mcalh, v \models \varphi$, for all $H$ and $v$
+  \end{itemize}
+
+  \vfill
+  $\models \varphi$ means that $\varphi$ is \emph{intuitionistically valid}, or \emph{intuitionistically tautology}
+
+\end{frame}
+
+\begin{frame}{Equivalence}
+  \textbf{Theorem.} \emph{Soundness and Completeness}
+  
+  The following conditions are equivalent:
+  \begin{enumerate}
+    \item $\Gamma \vdash \varphi$
+    \item $\Gamma \models \varphi$
+  \end{enumerate}
+
+  \vfill
+  \pause
+  \textbf{Example.}
+  
+  Peirce's law $((p \to q) \to p) \to p$ isn't intuitionistically valid
+
+\end{frame}
+
+\begin{frame}{Properties}
+  \emph{Intuitionistic logic isn't finite-valued}
+
+  There is no single finite Heyting algebra \calh such that $\vdash \varphi$ is equivalent to
+  $\mcalh \models \varphi$
+
+  \pause
+  \vfill
+  \textbf{Theorem}
+  \begin{enumerate}
+    \item A formula $\varphi$ of length $n$ is valid iff it is valid in all Heyting algebras
+          of cardinality at most $2^{2^n}$
+    \item Let \calh be the algebra of all open subsets of a dense-in-itself metric space $V$.
+          Then $\mcalh \models \varphi$ iff $\varphi$ is valid
+  \end{enumerate}
+
 \end{frame}
 
 \end{document}
