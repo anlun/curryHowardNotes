@@ -449,4 +449,37 @@
 
 \end{frame}
 
+\begin{frame}{Kripke model}
+  A \emph{Kripke model} --- $\mathcal{C} = \langle C,\leq,{\Vdash} \rangle$
+  \begin{itemize}
+    \item $C$ --- a non-empty set
+    \item $\leq$ --- a partial order on $C$
+    \item $\Vdash$ --- a relation between $C$ and \textbf{propositional variables}
+    \begin{itemize}
+      \item If $c \leq c'$ and $c \Vdash p$ then $c' \Vdash p$
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{$\Vdash$ generalization to $\Phi$}
+  A \emph{Kripke model} --- $\mathcal{C} = \langle C,\leq,{\Vdash} \rangle$
+  \begin{itemize}
+    \item $c \Vdash \varphi \vee \psi$ iff $c \Vdash \varphi$ or $c \Vdash \psi$
+    \item $c \Vdash \varphi \wedge \psi$ iff $c \Vdash \varphi$ and $c \Vdash \psi$
+    \item $c \Vdash \varphi \to \psi$ iff $c' \Vdash \psi$, for all $c'$ such that $c \leq c'$ and $c' \Vdash \varphi$
+    \item $c \Vdash \bot$ never happens
+
+    \vfill
+    \pause
+    \item $c \Vdash \lnot \varphi$ iff $c' \Vdash \varphi$, for all $c' \geq c$
+  \end{itemize}
+
+  \pause
+  \vfill
+  This definition preserves:
+  \begin{itemize}
+      \item If $c \leq c'$ and $c \Vdash \varphi$ then $c' \Vdash \varphi$
+  \end{itemize}
+\end{frame}
+
 \end{document}
