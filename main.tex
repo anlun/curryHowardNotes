@@ -289,4 +289,23 @@
   \end{enumerate}
 \end{frame}
 
+\begin{frame}{Boolean algebra}
+  A \emph{Boolean algebra} is an algebraic system of the form
+  $\mathcal{B} = \langle B, \cup, \cap, -, 0, 1\rangle$, where:
+  \begin{itemize}
+    \item $\cup, \cap$ are associative and commutative;
+    \item $(a \cup b) \cap c = (a \cap c) \cup (b \cap c) \;$ and
+          $\; (a \cap b) \cup c = (a \cup c) \cap (b \cup c)$;
+    \item $a \cup 0 = a \;$ and $\; a \cap 1 = a$;
+    \item $-a \cup a = 1 \;$ and $\; -a \cap a = 0\;$
+  \end{itemize}
+
+  \vfill
+  
+  The relation $\leq$ defined as by $a \leq b$ iff $a \cup b = b$ is a partial order,
+  $\cap, \cup$ are the \emph{glb} and \emph{lub} operations
+
+
+\end{frame} 
+
 \end{document}
