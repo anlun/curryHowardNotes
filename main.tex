@@ -39,7 +39,7 @@
 {Intuitionistic Logic}
 
 \author
-[JBStuff]{Podkopaev Anton, Daniil Berezun}
+[JBStuff]{Anton Podkopaev, Daniil Berezun}
 \institute{JetBrains Lab}
 \date [20-10-14]{20 oct 2014}
 
@@ -110,7 +110,7 @@
      \item $((p \leftrightarrow q) \leftrightarrow r) \leftrightarrow (p \leftrightarrow (q \leftrightarrow r))$
      \item $((p \wedge q) \to r) \leftrightarrow (p \to (q \to r))$
      \item $(p \to q) \leftrightarrow (\lnot p \vee q)$
-     \item $\lnot\lnot (p \vee p)$
+     \item $\lnot\lnot (p \vee \lnot p)$
    \end{enumerate}
 \end{frame}
 
@@ -128,7 +128,7 @@
      \item \textcolor{red}{$((p \leftrightarrow q) \leftrightarrow r) \leftrightarrow (p \leftrightarrow (q \leftrightarrow r))$}
      \item $((p \wedge q) \to r) \leftrightarrow (p \to (q \to r))$
      \item \textcolor{red}{$(p \to q) \leftrightarrow (\lnot p \vee q)$}
-     \item \textcolor{red}{$\lnot\lnot (p \vee p)$}
+     \item $\lnot\lnot (p \vee \lnot p)$
    \end{enumerate}
 \end{frame}
 
@@ -480,6 +480,59 @@
   \begin{itemize}
       \item If $c \leq c'$ and $c \Vdash \varphi$ then $c' \Vdash \varphi$
   \end{itemize}
+\end{frame}
+
+\begin{frame}{Filter}
+  A \emph{filter} in a Heyting algebra $\mcalh \langle H, \cup, \cap, \Rightarrow, -, 0, 1\rangle$ is a nonempty subset $F$ of $H$, such that
+  \begin{itemize}
+    \item $a, b \in F$ implies $a \cap b \in F$
+    \item $a \in F$ and $a \leq b$ implies $b \in F$
+  \end{itemize}
+
+  \vfill
+  A filter $F$ is \emph{proper} iff $F \nleq H$
+  \vfill
+  A proper filter $F$ is \emph{prime} iff $a \cup b \in F$ implies that either $a$ or $b$ belongs to $F$
+\end{frame}
+
+\begin{frame}{Properties}
+  \textbf{Lemma}
+
+  $F$ --- proper filter in $\mathcal{H}$, $a \notin F$. There exists a prime filter $G$ such that $F \subseteq G$ and $a \notin G$
+  \vfill
+
+  \pause
+  \textbf{Lemma}
+
+  $v$ --- a valuation in $\mathcal{H}$. There is $\mathcal{C} = \langle V, \leq, \Vdash \rangle$,
+  such that $\mcalh, v \models \varphi$ iff $\mathcal{C} \Vdash \varphi$, for all formulas $\varphi$
+  
+  \vfill
+
+  \pause
+  \textbf{Theorem}
+
+  The sequent $\Gamma \vdash \varphi$ is provable iff for all Kripke models $\mathcal{C}$, the condition
+  $\mathcal{C} \Vdash \Gamma$ implies $\mathcal{C} \Vdash \varphi$
+
+\end{frame}
+
+\begin{frame}{The implicational fragment}
+  \textbf{Theorem}
+
+  The implicational fragment of intuitionistic propositional calculus is complete
+  with respect to Kripke models, i.e., $\Gamma \vdash \varphi$ is provable iff for all Kripke
+  models $\mathcal{C}$, the condition $\mathcal{C} \Vdash \Gamma$ implies $\mathcal{C} \Vdash \varphi$
+  
+  \vfill
+
+  \pause
+  \textbf{Theorem}
+
+  $\varphi$ --- implicational formula. $\Gamma$ --- set of implicational formulas.
+
+  If $\Gamma \vdash \varphi$ can be derived in the intuitionistic propositional calculus then
+  it can be derived in the implicational fragment
 \end{frame}
 
 \end{document}

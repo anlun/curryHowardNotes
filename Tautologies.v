@@ -59,10 +59,10 @@ split; last case => //.
 Qed.
 *)
 
-(* False
-Lemma t13 (P : Prop) : ~ ~ (P \/ ~ P).
+Lemma ex1 (P Q : Prop) : ~ (P \/ Q) -> (~ P /\ ~ Q).
 Proof.
-move=> H.
+by move=> H; split; move=> H'; apply H; [left | right].
+Qed.
 
-Qed. 
-*)
+Lemma t13 (P : Prop) : ~ ~ (P \/ ~ P).
+Proof. by move/ex1; case. Qed.
