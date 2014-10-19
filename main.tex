@@ -38,8 +38,10 @@
 [Intuitionistic Logic]
 {Intuitionistic Logic}
 
+\subtitle{Based on Sorensen, Urzyczyn lectures}
+
 \author
-[JBStuff]{Anton Podkopaev, Daniil Berezun}
+[Podkopaev]{Anton Podkopaev, podkoav239@gmail.com}
 \institute{JetBrains Lab}
 \date [20-10-14]{20 oct 2014}
 
@@ -47,20 +49,38 @@
 	\titlepage
 \end{frame}
 
-\begin{frame}{Some history blah-blah}
+\begin{frame}{History}
+  \begin{columns}
+
+  \begin{column}{0.5\linewidth}
+    \textbf{Luitzen Egbertus Jan Brouwer} (1881-1966)
+
+    \vfill
+
+    "Intuitionism" against Hilbert's "formalism"
+  \end{column}
+
+  \begin{column}{0.5\linewidth}
+    \includegraphics[width = \linewidth]{images/brouwer.jpg}
+  \end{column}
+
+  \end{columns}
 \end{frame}
 
-\begin{frame}{Examples (1)}
+\begin{frame}{Example (1)}
+  \emph{Tertium non datur:} $p \vee \lnot p$
+  \pause
+  \vfill
   \emph{
     There is seven $7$'s in a row somewhere in
     the decimal representation
-    of the number $\pi$.
+    of the number $\pi$
   }
 \end{frame}
 
-\begin{frame}{Examples (2)}
+\begin{frame}{Example (2)}
   \emph{
-    There are two irrational numbers $x$ and $y$, such that $x^y$ is rational.
+    There are two irrational numbers $x$ and $y$, such that $x^y$ is rational
   }
   \vfill
   \begin{block}{Proof:}
@@ -226,7 +246,7 @@
 
 \newcommand{\vsem}[1]{\llbracket #1 \rrbracket_v}
 \newcommand{\vmsem}[1]{$\llbracket #1 \rrbracket_v$}
-\newcommand{\got}[1]{$\mathbb{#1} \;$}
+\newcommand{\got}[1]{$\mathbb{#1}$}
 \newcommand{\gotb}{\got{B}}
 \newcommand{\cali}[1]{$\mathcal{#1} \;$}
 \newcommand{\calr}{\cali{R}}
@@ -238,7 +258,7 @@
 
     \vfill
 
-    \item The map \vmsem{\bullet} : $\Phi \to$ \gotb by:
+    \item The map \vmsem{\bullet} : $\Phi \to$ \gotb $\,$ by:
 
       $\begin{aligned}
         \vsem{p} &= v(p) & for \; p \in PV \\
@@ -264,7 +284,7 @@
     
     \item \{\}, X $\in \mathcal{R}$
     
-    \item A \emph{valuation in} \calr is a map \emph{PV} $\to$ \calr
+    \item A \emph{valuation in} \calr is a map $v: PV \to$ \calr
       
     \vfill
 
@@ -280,11 +300,11 @@
   \end{itemize}
 \end{frame}
 
-\begin{frame}{}
+\begin{frame}{Equivalence}
   The above two approaches to semantics are equivalent, i.e., the following conditions
   are equivalent for each field of subsets \calr over a nonempty set $X$:
   \begin{enumerate}
-    \item $\varphi \;$ \emph{is a tautology};
+    \item $\varphi \;$ \emph{is a tautology}
     \item $v(\varphi) \,=\, X$, for all valuations $v \; in \; $\calr
   \end{enumerate}
 \end{frame}
@@ -293,10 +313,10 @@
   A \emph{Boolean algebra} is an algebraic system of the form
   $\mathcal{B} = \langle B, \cup, \cap, -, 0, 1\rangle$, where:
   \begin{itemize}
-    \item $\cup, \cap$ are associative and commutative;
+    \item $\cup, \cap$ are associative and commutative
     \item $(a \cup b) \cap c = (a \cap c) \cup (b \cap c) \;$ and
-          $\; (a \cap b) \cup c = (a \cup c) \cap (b \cup c)$;
-    \item $a \cup 0 = a \;$ and $\; a \cap 1 = a$;
+          $\; (a \cap b) \cup c = (a \cup c) \cap (b \cup c)$
+    \item $a \cup 0 = a \;$ and $\; a \cap 1 = a$
     \item $-a \cup a = 1 \;$ and $\; -a \cap a = 0\;$
   \end{itemize}
 
@@ -313,9 +333,13 @@
 \begin{frame}{Lindenbaum algebra}
   \begin{itemize}
     \item $\Gamma \subseteq \Phi$
+    \pause
     \item $\varphi \sim \psi$ iff $\Gamma \vdash \varphi \to \psi$ and $\Gamma \vdash \psi \to \varphi$
+    \pause
     \item $\mathcal{L} _{\Gamma} = {\Phi}/_{\sim} = \{\eqc{\varphi} : \varphi \in \Phi\}$
+    \pause
     \item $\eqc{\varphi} \leq \eqc{\psi}$ iff $\Gamma \vdash \varphi \to \psi$
+    \pause
     \item Operations over $\mathcal{L}_{\Gamma}$:
 
       $\begin{aligned}
@@ -345,11 +369,11 @@
 \begin{frame}{Heyting algebra}
   $\mathcal{H} = \langle H, \cup, \cap, \Rightarrow, -, 0, 1 \rangle$
   \begin{itemize}
-    \item $\cup, \cap$ are associative and commutative;
+    \item $\cup, \cap$ are associative and commutative
     \item $(a \cup b) \cap c = (a \cap c) \cup (b \cap c) \;$ and
-          $\; (a \cap b) \cup c = (a \cup c) \cap (b \cup c)$;
-    \item $a \cup 0 = a \;$ and $\; a \cap 1 = a$;
-    \item $a \cup a = a$;
+          $\; (a \cap b) \cup c = (a \cup c) \cap (b \cup c)$
+    \item $a \cup 0 = a \;$ and $\; a \cap 1 = a$
+    \item $a \cup a = a$
     \item $a \cap c \leq b$ is equivalent to $c \leq a \Rightarrow b$,
       
       where $a \leq b$ stands for $a \cup b = b$
@@ -374,7 +398,7 @@
   \begin{itemize}
     \item $\mathcal{O}(\mathbb{R}^2)$ is the family of all open subsets 
     \item $A \Rightarrow B := Int(-A \cup B)$
-    \item $0 = \{\}$ and $1 = \mathbb{R}$
+    \item $0 = \{\}$ and $1 = \mathbb{R}^2$
     \item ${\sim} A = Int(-A)$
   \end{itemize}
 \end{frame}
@@ -432,7 +456,7 @@
 \end{frame}
 
 \begin{frame}{Properties}
-  \emph{Intuitionistic logic isn't finite-valued}
+  \emph{Intuitionistic logic isn't finite-valued:}
 
   There is no single finite Heyting algebra \calh such that $\vdash \varphi$ is equivalent to
   $\mcalh \models \varphi$
@@ -471,7 +495,7 @@
 
     \vfill
     \pause
-    \item $c \Vdash \lnot \varphi$ iff $c' \Vdash \varphi$, for all $c' \geq c$
+    \item $c \Vdash \lnot \varphi$ iff $c' \nVdash \varphi$, for all $c' \geq c$
   \end{itemize}
 
   \pause
@@ -490,7 +514,7 @@
   \end{itemize}
 
   \vfill
-  A filter $F$ is \emph{proper} iff $F \nleq H$
+  A filter $F$ is \emph{proper} iff $F \neq H$
   \vfill
   A proper filter $F$ is \emph{prime} iff $a \cup b \in F$ implies that either $a$ or $b$ belongs to $F$
 \end{frame}
