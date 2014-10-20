@@ -38,7 +38,7 @@
 [Intuitionistic Logic]
 {Intuitionistic Logic}
 
-\subtitle{Based on Sorensen, Urzyczyn lectures}
+\subtitle{Based on S\o rensen, Urzyczyn lectures}
 
 \author
 [Podkopaev]{Anton Podkopaev, podkoav239@gmail.com}
@@ -251,9 +251,9 @@
 \newcommand{\cali}[1]{$\mathcal{#1} \;$}
 \newcommand{\calr}{\cali{R}}
 
-\begin{frame}{The boolean semantics}
+\begin{frame}{The Boolean semantics}
   \begin{itemize}
-    \item A \emph{valuation in} \gotb is a map \emph{PV} $\to$ \gotb;
+    \item A \emph{valuation in} \gotb $\,$ is a map \emph{PV} $\to$ \gotb;
       such a map will also be called a 0-1 \emph{valuation}
 
     \vfill
@@ -288,7 +288,7 @@
       
     \vfill
 
-    \item The map \vmsem{\bullet} : $\Phi \to X$ by:
+    \item The map \vmsem{\bullet} : $\Phi \to \mathcal{R}$ by:
 
       $\begin{aligned}
         \vsem{p} &= v(p) & for \; p \in PV \\
@@ -304,7 +304,7 @@
   The above two approaches to semantics are equivalent, i.e., the following conditions
   are equivalent for each field of subsets \calr over a nonempty set $X$:
   \begin{enumerate}
-    \item $\varphi \;$ \emph{is a tautology}
+    \item $\varphi$ \emph{is a tautology}
     \item $v(\varphi) \,=\, X$, for all valuations $v \; in \; $\calr
   \end{enumerate}
 \end{frame}
@@ -423,7 +423,7 @@
 \newcommand{\mcalh}{\mathcal{H}}
 
 \begin{frame}{Intuitionistical derivation rules}
-  $\mathcal{H} = \langle \mathcal{O}(\mathbb{R}^2), \cup, \cap, \Rightarrow, {\sim}, 0, 1 \rangle$
+  $\mathcal{H} = \langle H, \cup, \cap, \Rightarrow, {\sim}, 0, 1 \rangle$
   \begin{itemize}
     \item $\mcalh, v \models \varphi$, whenever $v(\varphi) = 1$
     \item $\mcalh \models \varphi$, whenever $\mcalh, v \models \varphi$, for all $v$
@@ -528,7 +528,7 @@
   \pause
   \textbf{Lemma}
 
-  $v$ --- a valuation in $\mathcal{H}$. There is $\mathcal{C} = \langle V, \leq, \Vdash \rangle$,
+  $v$ --- a valuation in $\mathcal{H}$. There is $\mathcal{C} = \langle C, \leq, \Vdash \rangle$,
   such that $\mcalh, v \models \varphi$ iff $\mathcal{C} \Vdash \varphi$, for all formulas $\varphi$
   
   \vfill
